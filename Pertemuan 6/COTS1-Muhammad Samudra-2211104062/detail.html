@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Produk - SamudShop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="bg-light border-bottom mb-3">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+      <div class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="Logo" class="me-2" height="40">
+        <span class="fw-bold">SamudShop</span>
+      </div>
+      <nav>
+        <a href="index.html" class="me-3 text-decoration-none text-dark">Beranda</a>
+        <a href="index.html#produk" class="me-3 text-decoration-none text-dark">Produk</a>
+        <a href="#" class="text-decoration-none text-dark">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- KONTEN DETAIL PRODUK -->
+  <div class="container mb-4">
+    <a href="index.html" class="btn btn-secondary mb-3">&larr; Kembali</a>
+
+    <!-- Gambar Produk (Slider) -->
+    <div class="mb-4">
+      <div id="carouselDetail" class="carousel slide border" data-bs-ride="carousel">
+        <div class="carousel-inner" id="carousel-images"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselDetail" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselDetail" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Deskripsi Produk -->
+    <div class="text-center">
+      <h3 id="product-title" class="fw-bold"></h3>
+      <p id="product-desc" class="mt-3"></p>
+      <h5 id="product-price" class="mb-3 text-primary"></h5>
+      <button id="add-to-cart" class="btn btn-primary">Add to Cart</button>
+    </div>
+    <div id="alert-container"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-light text-center py-3 border-top mt-4">
+    SamudShop + by 2211104062
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const products = {
+      1: { name: "Gantungan Kunci", price: "Rp100.000", desc: "Gantungan kunci imut", images: ["produk1.jpg", "produk1_1.jpg"] },
+      2: { name: "Mouse", price: "Rp150.000", desc: "Mouse ringan di tangan", images: ["produk2.jpg", "produk2_1.jpg"] },
+      3: { name: "Headphone", price: "Rp200.000", desc: "Headphone dengan suara Clear", images: ["produk3.jpg", "produk3_1.jpg"] },
+      4: { name: "Kursi", price: "Rp250.000", desc: "Kursi yang nyaman untuk duduk", images: ["produk4.jpg", "produk4_1.jpg"] },
+      5: { name: "Kalung", price: "Rp300.000", desc: "Kalung yang mewah", images: ["produk5.jpg", "produk5_1.jpg"] },
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("product");
+    const product = products[id];
+
+    if (product) {
+      $("#product-title").text(product.name);
+      $("#product-desc").text(product.desc);
+      $("#product-price").text(product.price);
+      let imgs = "";
+      product.images.forEach((img, i) => {
+        imgs += `<div class="carousel-item ${i === 0 ? "active" : ""}">
+                  <img src="assets/img/${img}" class="d-block w-100" alt="${product.name}">
+                 </div>`;
+      });
+      $("#carousel-images").html(imgs);
+    }
+
+    function showAlert(message) {
+      const html = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>`;
+      $("#alert-container").html(html);
+      setTimeout(() => $(".alert").alert("close"), 2500);
+    }
+
+    $("#add-to-cart").click(() => {
+      if (product) showAlert(product.name + " telah ditambahkan ke keranjang!");
+    });
+  </script>
+</body>
+</html>

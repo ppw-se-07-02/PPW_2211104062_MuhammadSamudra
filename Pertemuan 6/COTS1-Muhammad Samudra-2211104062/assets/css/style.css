@@ -1,0 +1,39 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.logo {
+  font-size: 1.2rem;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.logo span {
+  font-size: 1.2rem;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* ==== biar button di carousel keliatan ==== */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.35); 
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: 60%;
+}
+
+/* kalo hover sedikit lebih gelap */
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: rgba(0, 0, 0, 0.55);
+}
