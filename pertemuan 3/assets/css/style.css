@@ -1,0 +1,127 @@
+body {
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+background-color: #fff;
+}
+
+/* Header*/
+header {
+background-color: purple;
+color: white;
+padding: 10px 0;
+}
+
+header.container{
+width: 90%;
+margin: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+header .logo {
+font-size: 24px;
+font-weight: bold;
+}
+
+nav ul {
+list-style: none;
+display: flex;
+gap: 20px;
+}
+
+nav ul li a {
+color: white;
+text-decoration: none;
+font-weight: 500;
+}
+
+/* Konten */
+.konten {
+display: flex;
+width: 90%;
+margin: 20px auto;
+}
+
+/* Produk */
+.produk {
+flex: 3;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 15px;
+}
+
+.produk .item{
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 5px;
+text-align: center;
+padding: 10px;
+}
+
+.produk img {
+width: 100%;
+border-radius: 5px;
+}
+
+.produk h3 {
+font-size: 14px;
+margin: 10px
+0 5px;
+}
+
+.produk p {
+color: #d10060;
+font-weight: bold;
+margin: 0;
+}
+
+/* Sidebar*/
+.sidebar {
+flex: 1;
+margin-left: 20px;
+text-align: center;
+}
+
+.sidebar h3 {
+color: purple;
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.sidebarimg {
+width: 90%;
+border-radius: 5px;
+}
+
+.sidebar .harga {
+color: #d10060;
+font-weight: bold;
+}
+
+/* Footer*/
+footer {
+background-color: #f2f2f2;
+margin-top: 40px;
+padding: 20px 0;
+}
+
+.footer-container {
+width: 90%;
+margin: auto;
+display: flex;
+justify-content: space-between;
+}
+
+.footer-box h4 {
+color: purple;
+}
+
+.footer-box a {
+text-decoration: none;
+color: #0056b3;
+}
+
+.footer-box a:hover{
+text-decoration: underline;
+}
