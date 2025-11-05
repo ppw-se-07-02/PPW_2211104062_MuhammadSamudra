@@ -1,1 +1,0 @@
-menggunakan internal css
