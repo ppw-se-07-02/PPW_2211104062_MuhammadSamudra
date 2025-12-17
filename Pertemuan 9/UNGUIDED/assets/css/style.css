@@ -1,0 +1,34 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.bg-purple {
+  background-color: purple !important;
+}
+
+.text-purple {
+  color: purple !important;
+}
+
+.carousel-item img {
+  height: 300px;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  font-size: 14px;
+}
+
+.text-danger {
+  color: #e60073 !important;
+  font-weight: bold;
+}
