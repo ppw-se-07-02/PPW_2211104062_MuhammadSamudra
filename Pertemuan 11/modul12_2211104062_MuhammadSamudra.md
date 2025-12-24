@@ -363,9 +363,10 @@ Di sini $request seperti $_POST dari laravel, asal datanya diinput oleh user di 
 
 1. Raw SQL Queries
 ```
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-public function insertRawSQL($request)
+public function insertRawSQL(Request $request)
 {
     $sql = "INSERT INTO destana (id_kecamatan, id_desa, tahun_pembentukan, id_sumber_dana, id_kelas) 
             VALUES (?, ?, ?, ?, ?)";
@@ -383,10 +384,10 @@ Raw sql queries menggunakan DB::insert, dan ditambah bindings untuk mencegah sql
 
 2. Query Builder
 ```
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-public function insertQueryBuilder($request)
-{
+public function insertQueryBuilder(Request $request)
     return DB::table('destana')->insert([
         'id_kecamatan'      => $request->id_kecamatan,
         'id_desa'           => $request->id_desa,
@@ -414,9 +415,12 @@ class Destana extends Model
 }
 
 ```
-Lalu di Controller tambahkan fungsi berikut:
+Lalu di Controller berisi:
 ```
-public function insertEloquent($request)
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+public function insertEloquent(Request $request)
 {
     return Destana::create([
         'id_kecamatan'      => $request->id_kecamatan,
