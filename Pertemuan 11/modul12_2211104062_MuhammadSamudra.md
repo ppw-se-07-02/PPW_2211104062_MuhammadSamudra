@@ -359,7 +359,7 @@ return new class extends Migration {
 Function up() membuat tabel 'destana' dengan kolom: id, id_kecamatan, id_desa, tahun_pembentukan, id_sumber_dana, dan id_kelas. function down() berisi perintah untuk menghapus tabel ketika di rollback.
 
 ## 12.2
-Di sini $request seperti $_POST dari laravel, asal datanya diinput oleh user di web.
+Di sini $request seperti $_POST dari laravel, asal datanya diinput oleh user di web. Jadi di bagian atas Controller ada baris `use Illuminate\Http\Request;`
 
 1. Raw SQL Queries
 ```
