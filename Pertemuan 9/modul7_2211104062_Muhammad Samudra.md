@@ -32,7 +32,7 @@ Oleh:
 
 ---
 
-## Wordpress
+## Wordpress (Guided)
 ### Instalasi
 1. Download:
     - XAMPP
@@ -90,7 +90,7 @@ Pages merupakan konten statis yang biasanya dipakai berulang, sementara posts ad
     ![](img/upload-FZ.png)
     - Pergi ke File Manager pada Hosting Management, lalu edit file wp-config untuk mengganti informasi database (db_name, username, password, hostname) menjadi informasi database remote yang didapatkan dari menu MySQL Databases
 
-## Hasil Hosting
+## Hasil Hosting (Unguided)
 samudra-ppw.rf.gd
 ![](img/cv-hosting.png)
 

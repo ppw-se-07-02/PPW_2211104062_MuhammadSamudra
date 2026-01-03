@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mahasiswa</title>
+</head>
+<body>
+    <h2>Form Tambah Mahasiswa</h2>
+    <form id="mhsForm">
+        <input type="text" id="nama" placeholder="Nama" required><br>
+        <input type="text" id="nim" placeholder="NIM" required><br>
+        <input type="text" id="jurusan" placeholder="Jurusan" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <button type="submit">Simpan</button>
+    </form>
+
+    <h2>Daftar Mahasiswa</h2>
+    <ul id="daftarMhs"></ul>
+
+    <script>
+        // Fungsi mengambil data (Read)
+        function loadMahasiswa() {
+            fetch('/mahasiswaGet')
+                .then(res => res.json())
+                .then(data => {
+                    const list = document.getElementById('daftarMhs');
+                    list.innerHTML = '';
+                    data.forEach(mhs => {
+                        list.innerHTML += `<li>${mhs.nama} - ${mhs.nim} (${mhs.jurusan})</li>`;
+                    });
+                });
+        }
+
+        // Fungsi menambah data (Create)
+        document.getElementById('mhsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                nama: document.getElementById('nama').value,
+                nim: document.getElementById('nim').value,
+                jurusan: document.getElementById('jurusan').value,
+                email: document.getElementById('email').value
+            };
+
+            fetch('/mahasiswaCreate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(() => {
+                loadMahasiswa();
+                e.target.reset();
+            });
+        });
+
+        loadMahasiswa(); // Load data saat halaman dibuka
+    </script>
+</body>
+</html>

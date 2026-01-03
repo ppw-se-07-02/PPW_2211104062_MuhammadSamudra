@@ -252,7 +252,145 @@ Dan di database bisa konfirmasi juga mahasiswa dengan id 3 sudah tidak ada
 
 
 # Unguided
+Untuk membuat aplikasi web, buatlah index.html di folder restfulAPI seperti berikut:
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Mahasiswa</title>
+</head>
+<body>
+    <h2>Form Tambah Mahasiswa</h2>
+    <form id="mhsForm">
+        <input type="text" id="nama" placeholder="Nama" required><br>
+        <input type="text" id="nim" placeholder="NIM" required><br>
+        <input type="text" id="jurusan" placeholder="Jurusan" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <button type="submit">Simpan</button>
+    </form>
 
+    <h2>Daftar Mahasiswa</h2>
+    <ul id="daftarMhs"></ul>
+
+    <script>
+        // Fungsi mengambil data (Read)
+        function loadMahasiswa() {
+            fetch('/mahasiswaGet')
+                .then(res => res.json())
+                .then(data => {
+                    const list = document.getElementById('daftarMhs');
+                    list.innerHTML = '';
+                    data.forEach(mhs => {
+                        list.innerHTML += `<li>${mhs.nama} - ${mhs.nim} (${mhs.jurusan})</li>`;
+                    });
+                });
+        }
+
+        // Fungsi menambah data (Create)
+        document.getElementById('mhsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                nama: document.getElementById('nama').value,
+                nim: document.getElementById('nim').value,
+                jurusan: document.getElementById('jurusan').value,
+                email: document.getElementById('email').value
+            };
+
+            fetch('/mahasiswaCreate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(() => {
+                loadMahasiswa();
+                e.target.reset();
+            });
+        });
+
+        loadMahasiswa(); // Load data saat halaman dibuka
+    </script>
+</body>
+</html>
+```
+
+Bagian form memfasilitasi user untuk menambahkan data:
+```
+<h2>Form Tambah Mahasiswa</h2>
+    <form id="mhsForm">
+        <input type="text" id="nama" placeholder="Nama" required><br>
+        <input type="text" id="nim" placeholder="NIM" required><br>
+        <input type="text" id="jurusan" placeholder="Jurusan" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <button type="submit">Simpan</button>
+    </form>
+```
+Lalu di bawahnya adalah script yang berfungsinya sebagai jembatan komunikasi antara pengguna (browser) dan server (Node.js).
+
+Operasi Read/GET dihandle oleh bagian ini:
+```
+function loadMahasiswa() {
+            fetch('/mahasiswaGet')
+                .then(res => res.json())
+                .then(data => {
+                    const list = document.getElementById('daftarMhs');
+                    list.innerHTML = '';
+                    data.forEach(mhs => {
+                        list.innerHTML += `<li>${mhs.nama} - ${mhs.nim} (${mhs.jurusan})</li>`;
+                    });
+                });
+        }
+```
+- `fetch('/mahasiswaGet')`: Melakukan permintaan (request) ke server Node.js pada endpoint /mahasiswaGet. Karena tidak ada parameter tambahan, secara default ini menggunakan metode GET.
+- `.then(res => res.json())`: Mengubah respon mentah dari server menjadi format JSON agar bisa diolah oleh JavaScript.
+- `data.forEach(mhs => ...)`: Melakukan perulangan (looping) pada setiap data mahasiswa yang diterima dari database.
+- `list.innerHTML += ...`: Memasukkan data mahasiswa (nama, nim, jurusan) ke dalam tag `<li>` di dalam HTML secara dinamis.
+
+Tombol 'simpan' memiliki tipe 'submit' yang akan menjalankan bagian kode yang menghandle operasi Create/POST:
+```
+document.getElementById('mhsForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = {
+                nama: document.getElementById('nama').value,
+                nim: document.getElementById('nim').value,
+                jurusan: document.getElementById('jurusan').value,
+                email: document.getElementById('email').value
+            };
+
+            fetch('/mahasiswaCreate', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(() => {
+                loadMahasiswa();
+                e.target.reset();
+            });
+        });
+```
+
+- `e.preventDefault()`: Mencegah browser melakukan refresh halaman secara otomatis saat tombol submit diklik. Ini penting agar aplikasi terasa lebih cepat (Single Page Application style).
+- Objek `data`: Mengambil nilai-nilai yang diketik user di kotak input (nama, nim, dll) dan membungkusnya ke dalam satu objek JavaScript.
+- `fetch('/mahasiswaCreate', { ... })`: Mengirim data ke server dengan konfigurasi khusus:
+  - `method: 'POST'`: Memberitahu server bahwa kita ingin mengirim/menambah data baru.
+  - `headers: {'Content-Type': 'application/json'}`: Memberitahu server bahwa data yang dikirim berformat JSON.
+  - `body: JSON.stringify(data)`: Mengubah objek JavaScript menjadi string JSON sebelum dikirim melalui jaringan internet.
+
+Terakhir ada `.then(() => { loadMahasiswa(); e.target.reset(); })`: Setelah proses simpan di server berhasil, script akan memanggil kembali fungsi `loadMahasiswa()` agar daftar di bawah langsung terupdate dengan data terbaru tanpa reload, kemudian mengosongkan isi form (reset).
+
+Jangan lupa app.js ditambah bagian ini sebelum menjalankan server agar index.html dijalankan:
+```
+// biar bisa diakses
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+```
+
+Tampilan sebelum klik tombol 'simpan:
+![](img/u1.png)
+
+Tampilan setelah klik tombol 'simpan'
+![](img/u2.png)
+
+Cek database apakah data tersimpan
+![](img/u3.png)
 
 
 
