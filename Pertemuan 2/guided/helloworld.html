@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judul Halaman</title>
+    <style>
+        /* teks */
+        p {
+            color: black;
+            /* warna teks */
+            font-family: Arial;
+            /* jenis huruf */
+            font-size: 16px;
+            /* ukuran huruf */
+            font-weight: bold;
+            /* tebal */
+            text-align: justify;
+            /* rata kiri-kanan */
+            line-height: 1.5;
+            /* jarak antar baris */
+        }
+
+        /* Background */
+        body {
+            background-color: #f4f4f4;
+            /* warna latar */
+            }
+            header {
+            background-color: navy;
+            /* latar belakang */
+            color: white;
+            /* warna teks */
+        }
+
+        /* Box Model */
+        div {
+            width: 300px;
+            /* lebar */
+            height: 150px;
+            /* tinggi */
+            margin: 20px;
+            /* jarak luar */
+            padding: 15px;
+            /* jarak dalam */
+            border: 2px solid black;
+            /* garis tepi */
+            border-radius: 8px;
+            /* sudut melengkung */
+        }
+
+        /* Layout */
+        nav ul li {
+            display: inline-block;
+            /* menu sejajar */
+            margin-right: 15px;
+            /* jarak antar menu */
+        }
+
+        /* Efek Hover */
+        a {
+            color: blue;
+            text-decoration: none;
+            /* hilangkan garis bawah */
+        }
+        a:hover {
+            color: red;
+            /* berubah saat diarahkan */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Pengenalan HTML -->
+    <h1>Hello Word</h1>
+
+    <hr>
+
+    <!-- Tag Html -->
+    <h1>Selamat Datang</h1>
+    <p>Ini adalah paragraf pertama saya.</p>
+    <a href="https://www.google.com">Kunjungi Google</a>
+    <br>
+    <img 
+    src="https://static.vecteezy.com/system/resources/previews/019/617/753/non_2x/group-of-money-symbol-png.png" 
+    alt="Money" width="200" height="200">
+
+    <hr>
+
+    <!-- Form pada Html -->
+    <form action="submit.php" method="post">
+        <h2>Form Pendaftaran</h2>
+
+        <label>Nama:</label>
+        <input type="text" name="nama" required><br>
+
+        <label>Jenis Kelamin:</label>
+        <input type="radio" name="jk" value="Laki-laki"> Laki-laki
+        <input type="radio" name="jk" value="Perempuan"> Perempuan<br>
+
+        <label>Hobi:</label>
+        <input type="checkbox" name="hobi" value="Membaca"> Membaca
+        <input type="checkbox" name="hobi" value="Olahraga"> Olahraga<br>
+
+        <label>Alamat:</label>
+        <textarea name="alamat"></textarea><br>
+
+        <label>Agama:</label>
+        <select name="agama">
+            <option>Islam</option>
+            <option>Kristen</option>
+            <option>Hindu</option>
+            <option>Buddha</option>
+        </select><br>
+
+        <button type="submit">Daftar</button>
+    </form>
+
+    <hr>
+    <!-- list dalam html -->
+     <h2>Daftar Buah (Unordered)</h2>
+        <ul>
+            <li>Apel</li>
+            <li>Pisang</li>
+            <li>Jeruk</li>
+        </ul>
+    <h2>Daftar Kegiatan Harian (Ordered)</h2>
+        <ol type="1">
+            <li>Bangun tidur</li>
+            <li>Mandi</li>
+            <li>Sarapan</li>
+        </ol>

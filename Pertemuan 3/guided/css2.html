@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan CSS Responsif</title>
+    <style>
+        /* 1. Layout Fleksibel dengan % dan vh */
+        .container {
+            width: 100%; /* Menggunakan persentase */
+            background: lightgray; /* Warna default */
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .hero {
+            width: 100vw; /* Lebar 100% layar */
+            height: 30vh; /* Tinggi 30% dari tinggi layar */
+            background: coral; /* Warna latar hero */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* 2. Media Queries */
+        
+        /* Untuk layar sedang (tablet/laptop kecil) */
+        @media (max-width: 768px) {
+            .container {
+                background: lightblue; /* Berubah jadi biru muda */
+            }
+        }
+
+        /* Untuk layar sangat kecil (HP mini) */
+        @media (max-width: 480px) {
+            .container {
+                background: pink; /* Berubah jadi pink */
+            }
+        }
+
+        /* 3. Gambar Fluid */
+        img {
+            max-width: 100%; /* Gambar tidak melampaui kontainer */
+            height: auto; /* Menjaga rasio proporsional */
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Header Hero (Responsive Height)</h1>
+    </section>
+
+    <div class="container">
+        <h2>Konten Responsif</h2>
+        <p>Coba ubah ukuran lebar browser Anda untuk melihat perubahan warna background!</p>
+        
+        <div style="width: 50%; margin: auto; border: 2px solid black;">
+            <p>Gambar di bawah akan mengecil mengikuti kotaknya:</p>
+            <img src="reisa.jpg" alt="Contoh Gambar Fluid">
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Selektor CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        p {
+            color: blue;
+        }
+        .judul {
+            color: red;
+            font-weight: bold;
+        }
+        #utama {
+            background-color: yellow;
+        }
+        div p {
+            color: green;
+        }
+        a:hover {
+            color: red;
+        }
+        input[type="text"] {
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="utama">Contoh Selektor CSS</h1>
+
+    <p>Ini paragraf pertama.</p>
+    
+    <p class="judul">Ini paragraf dengan class "judul".</p>
+
+    <div>
+        <p>Paragraf di dalam div (selektor kombinasi).</p>
+    </div>
+
+    <a href="#">Arahkan kursor ke tautan ini</a>
+
+    <br><br>
+
+    <form>
+        <input type="text" placeholder="Ketik di sini...">
+    </form>
+
+</body>
+</html>
