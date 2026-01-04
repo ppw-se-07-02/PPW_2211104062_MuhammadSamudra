@@ -1,0 +1,74 @@
+/* ======= DASAR ======= */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+/* ======= WARNA KHUSUS ======= */
+.bg-purple {
+  background-color: purple !important;
+}
+
+.text-purple {
+  color: purple !important;
+}
+
+/* ======= HEADER ======= */
+header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* ======= NAVIGATION ======= */
+.nav-link {
+  font-weight: 500;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* ======= CAROUSEL ======= */
+.carousel-item img {
+  height: 300px;        /* sesuaikan tinggi banner */
+  object-fit: cover;    /* jaga proporsi gambar */
+}
+
+/* ======= PRODUK (CARD) ======= */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: scale(1.03);
+}
+.card-title {
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+.text-danger {
+  color: #d10060 !important;
+  font-weight: bold;
+}
+
+/* ======= SIDEBAR ======= */
+aside img {
+  border-radius: 5px;
+}
+
+/* ======= FOOTER ======= */
+footer h5 {
+  color: purple;
+  font-weight: bold;
+}
+
+footer a {
+  text-decoration: none;
+  color: #0056b3;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
