@@ -32,7 +32,127 @@ Oleh:
 
 ---
 
-# 1. Responsif
+# Guided
+## Dasar Teori
+CSS (Cascading Style Sheets) adalah bahasa yang digunakan untuk mengatur tampilan dan gaya dari elemen-elemen HTML. Jika HTML berfungsi untuk menyusun struktur sebuah halaman web, maka CSS berfungsi untuk menghias halaman tersebut agar lebih menarik, rapi, dan nyaman dilihat.
+Ada tiga jenis penulisan css, yaitu:
+1. Inline CSS → ditulis langsung dalam elemen HTML menggunakan atribut style.
+`<p style="color:red;">Teks ini berwarna merah</p>`
+2. Internal CSS → ditulis dalam tag <style> di bagian <head>.
+```
+<style>
+  h1 {
+    color: green;
+  }
+</style>
+```
+3. External CSS → ditulis di file .css terpisah, lalu dihubungkan dengan `<link>`.
+`<link rel="stylesheet" href="style.css">`
+
+## Selektor CSS
+Selektor digunakan untuk memilih elemen HTML yang akan diberi gaya.
+Beberapa jenis selektor yang umum digunakan:
+![](i/01.png)
+```
+<style>
+        * {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+        }
+        p {
+            color: blue;
+        }
+        .judul {
+            color: red;
+            font-weight: bold;
+        }
+        #utama {
+            background-color: yellow;
+        }
+        div p {
+            color: green;
+        }
+        a:hover {
+            color: red;
+        }
+        input[type="text"] {
+            border: 1px solid #000;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+```
+
+Hasil:
+![](i/02.png)
+
+## CSS Responsif
+1. Layout Fleksibel (Flexible Layout)
+Menggunakan persentase (%), vw/vh: vw (viewport width), vh (viewport height) adalah satuan yang setara dengan 1% dari tinggi viewport.
+  - Dengan %
+  ```
+  .container {
+            width: 100%; /* Menggunakan persentase */
+            background: lightgray; /* Warna default */
+            text-align: center;
+            padding: 20px 0;
+        }
+  ```
+
+  - Dengan vw dan vh
+  ```
+  .hero {
+            width: 100vw; /* Lebar 100% layar */
+            height: 30vh; /* Tinggi 30% dari tinggi layar */
+            background: coral; /* Warna latar hero */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+  ```
+
+
+
+2. Media Queries
+Digunakan untuk menerapkan CSS khusus sesuai lebar layar.
+```
+        /* Untuk layar sedang (tablet/laptop kecil) */
+        @media (max-width: 768px) {
+            .container {
+                background: lightblue; /* Berubah jadi biru muda */
+            }
+        }
+
+        /* Untuk layar sangat kecil (HP mini) */
+        @media (max-width: 480px) {
+            .container {
+                background: pink; /* Berubah jadi pink */
+            }
+        }
+```
+
+3. Gambar dan Elemen Fluid
+Menggunakan `max-width: 100%;` agar gambar tidak melampaui ukuran kontainer.
+```
+img {
+max-width: 100%;
+height: auto;
+}
+```
+
+Keterangan:
+- max-width: 100% membuat gambar tidak lebih besar dari kontainer.
+- height: auto menjaga rasio gambar tetap proporsional.
+
+Hasilnya seperti ini:
+![](i/ezgif-27233223d51ab433.gif)
+Container, header hero, dan gambar memiliki rasio tetap, membesar dan mengecil mengikuti ukuran layar. Lalu perhatikan background konten responsif akan berganti warna jika ukuran mengecil sesuai media queries
+
+# Unguided
+
+## 1. Responsif
 Menambahkan kode berikut pada style.css untuk mengatur responsif
 
 ```
@@ -79,7 +199,7 @@ Berikut screenshot responsif, dari 4 kolom per baris hingga 1 kolom per baris:
 
 ![](assets/image/ss4.png)
 
-# 2. Banner
+## 2. Banner
 Berikut bagian .css untuk mengatur banner slideshow:
 ```
 .banner {
