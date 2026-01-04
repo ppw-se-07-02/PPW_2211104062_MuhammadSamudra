@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Praktikum 6.3 - Object Orientation</title>
+</head>
+<body>
+    <div id="outputObject"></div>
+    <hr>
+    <div id="outputTruk"></div>
+
+    <script>
+        // --- Object Literal & Nested Object ---
+        var mobil = {
+            "warna-badan": "merah",
+            "nomor-polisi": "BK1234AB",
+            merk: "Toyota",
+            tahun: 2020
+        };
+
+        var jadwal = {
+            platform: 34,
+            asal: { kode_kota: "MDN", nama_kota: "Medan" },
+            tujuan: { kode_kota: "JKT", nama_kota: "Jakarta" }
+        };
+
+        // Modifikasi properti secara dinamis
+        mobil.jumlahBan = 4;
+        mobil["warna-badan"] = "biru";
+
+        document.getElementById("outputObject").innerHTML = 
+            "Warna Mobil: " + mobil["warna-badan"] + "<br>" +
+            "Merk: " + mobil.merk + "<br>" +
+            "Asal: " + jadwal.asal.nama_kota + "<br>" +
+            "Jumlah Ban: " + mobil.jumlahBan;
+
+        // --- Prototype & Inheritance ---
+        var prototipeMobil = { nama: "Mobil", roda: 4 };
+        var truk = Object.create(prototipeMobil);
+        truk.muatan = "10 Ton";
+        
+        document.getElementById("outputTruk").innerHTML = 
+            "Objek Truk mewarisi roda: " + truk.roda + "<br>" +
+            "Muatan Truk: " + truk.muatan;
+    </script>
+</body>
+</html>

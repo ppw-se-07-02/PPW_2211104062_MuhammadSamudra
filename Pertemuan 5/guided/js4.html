@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Praktikum 6.5 - 6.7 jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        #box {
+            background: #98bf21;
+            height: 100px;
+            width: 100px;
+            position: relative; /* Penting untuk animasi posisi */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Latihan jQuery</h1>
+    
+    <p id="hasilArray"></p>
+    <p id="outputMatematika"></p>
+    <p id="hasilKelulusan"></p>
+
+    <hr>
+    
+    <p class="teks-sembunyi">Jika tombol 'Hide' diklik, saya akan hilang.</p>
+    <button id="hide">Hide Text</button>
+    <button id="show">Show Text</button>
+    
+    <br><br>
+    <button id="btnAnimate">Toggle Box Height</button>
+    <div id="box"></div>
+
+    <script>
+        $(document).ready(function() {
+            // 1. Manipulasi Array & Text (Bab 6.6)
+            var hobi = ["Membaca", "Coding", "Musik"];
+            $("#hasilArray").text("Hobi favorit: " + hobi[1]);
+
+            // 2. Operasi Bilangan
+            var a = 10, b = 5;
+            $("#outputMatematika").text("Hasil 10 + 5 = " + (a + b));
+
+            // 3. If-Else & Manipulasi CSS
+            var nilai = 75;
+            if (nilai >= 70) {
+                $("#hasilKelulusan").text("Selamat, kamu lulus!").css("color", "green");
+            } else {
+                $("#hasilKelulusan").text("Maaf, kamu belum lulus.").css("color", "red");
+            }
+
+            // 4. Efek Hide/Show (Bab 6.7.1)
+            $("#hide").click(function() {
+                $(".teks-sembunyi").hide();
+            });
+            $("#show").click(function() {
+                $(".teks-sembunyi").show();
+            });
+
+            // 5. Animasi (Bab 6.7.2)
+            $("#btnAnimate").click(function() {
+                $("#box").animate({
+                    height: 'toggle'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

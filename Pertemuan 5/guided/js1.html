@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Praktikum 6.2 - Sintaks Umum</title>
+</head>
+<body>
+    <h3>Output Tipe Data & Variabel:</h3>
+    <div id="outputTipeData"></div>
+    <hr>
+    <h3>Output Array:</h3>
+    <div id="array"></div>
+    <div id="array2"></div>
+    <hr>
+    <h3>Output Percabangan & Perulangan:</h3>
+    <div id="outputPercabangan"></div>
+    <div id="whileLoop"></div>
+
+    <script>
+        // --- Variabel & Tipe Data ---
+        var angka = 42;
+        var teks = "Ahmad Ruslan";
+        var benar = true;
+        var salah = false;
+        var kosong = null;
+        var tidakDidefinisikan;
+        var daftar = ["apel", "pisang", "mangga"];
+        var tanggal = new Date();
+        var pola = /[A-Z]/;
+        var orang = { nama: "Ruslan", umur: 21 };
+
+        var hasil = "<b>Number:</b> " + angka + "<br>" +
+                    "<b>String:</b> " + teks + "<br>" +
+                    "<b>Boolean 1:</b> " + benar + "<br>" +
+                    "<b>Boolean 0:</b> " + salah + "<br>" +
+                    "<b>Null:</b> " + kosong + "<br>" +
+                    "<b>Undefined:</b> " + tidakDidefinisikan + "<br>" +
+                    "<b>Array:</b> " + daftar.join(", ") + "<br>" +
+                    "<b>Date:</b> " + tanggal + "<br>" +
+                    "<b>RegExp:</b> " + pola + ", Test 'Sirsak': " + pola.test("Sirsak") + "<br>" +
+                    "<b>Object:</b> nama = " + orang.nama + ", umur = " + orang.umur;
+        
+        document.getElementById("outputTipeData").innerHTML = hasil;
+
+        // --- Array Method (Push/Pop) ---
+        var data2 = ["pisang", "apel", "mangga"];
+        var resArray = "Isi awal: " + data2 + "<br>Panjang: " + data2.length + "<br>";
+        data2.push("durian");
+        resArray += "Setelah push (durian): " + data2 + "<br>";
+        var dihapus = data2.pop();
+        resArray += "Elemen dihapus (pop): " + dihapus + "<br>Isi akhir: " + data2;
+        document.getElementById("array2").innerHTML = resArray;
+
+        // --- Percabangan (Strict Comparison ===) ---
+        var pendidikan = "S2";
+        var gelar;
+        if (pendidikan === "S1") { gelar = "Sarjana"; }
+        else if (pendidikan === "S2") { gelar = "Master"; }
+        else { gelar = "Tidak diketahui"; }
+        document.getElementById("outputPercabangan").innerHTML = "Pendidikan: " + pendidikan + ", Gelar: " + gelar;
+
+        // --- Perulangan (While) ---
+        var text1 = "";
+        var i = 0;
+        while (i < 3) {
+            text1 += "Perulangan while ke-" + i + "<br>";
+            i++;
+        }
+        document.getElementById("whileLoop").innerHTML = text1;
+    </script>
+</body>
+</html>

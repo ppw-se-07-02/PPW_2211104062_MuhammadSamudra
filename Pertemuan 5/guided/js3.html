@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Praktikum 6.4 - Function</title>
+</head>
+<body>
+    <div id="hasilTambah"></div>
+    <div id="hasilKali"></div>
+
+    <script>
+        // --- Function Declaration ---
+        function tambah(a, b) {
+            return a + b;
+        }
+
+        // --- Function Expression (Anonymous/Lambda) ---
+        var kali = function(a, b) {
+            return a * b;
+        };
+
+        // Pemanggilan Bertingkat
+        var hasil1 = tambah(3, 5);
+        var hasil2 = tambah(tambah(3, 5), 2); // 8 + 2
+        var hasil3 = tambah(tambah(2, 3), 4); // 5 + 4
+
+        document.getElementById("hasilTambah").innerHTML = 
+            "Hasil 3 + 5 = " + hasil1 + "<br>" +
+            "Hasil (3+5) + 2 = " + hasil2 + "<br>" +
+            "Hasil (2+3) + 4 = " + hasil3;
+
+        document.getElementById("hasilKali").innerHTML = "Hasil kali (4, 5) = " + kali(4, 5);
+    </script>
+</body>
+</html>
